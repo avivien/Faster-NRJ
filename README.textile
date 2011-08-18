@@ -1,3 +1,3 @@
 Faster's NRJ is a new energy drink.
 
-!http://github.com/Arachnid/bloggart/raw/master/static/images/fastersrouge.png!
+!https://github.com/avivien/Faster-NRJ/raw/master/static/images/fastersrouge.png!
