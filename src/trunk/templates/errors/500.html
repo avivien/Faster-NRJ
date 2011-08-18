@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+  500 - Server error.
+{% endblock %}
+
+{% block heading %}
+  Server error
+{% endblock %}
+
+{% block content %}
+{% if message %}
+{{ message|escape }}
+{% else %}
+  Server error when processing the page.
+{% endif %}
+{% endblock %}

@@ -1,0 +1,14 @@
+<html>
+<body>
+  <div>
+    <div>Devis demandé par {% if type_utilisateur == 'pa'%}le particulier {% endif %}{% if type_utilisateur == 'so'%}la société {% endif %}<b>{{ nom }}</b></div>
+    <ul>
+      <li>Email : {{ email }}</li>
+      {% if tel %}<li>Téléphone : {{ tel }}</li>{% endif %}
+      <li>Ville : {{ ville }}</li>
+      {% if commande %}<li>Commande : {{ commande }}</li>{% endif %}
+    </ul>
+  </div>
+  <div style="white-space: pre-line; padding-top:10px;">{{ message }}</div>
+</body>
+</html>

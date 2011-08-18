@@ -1,0 +1,505 @@
+
+/* ==== Scroll down to find where to put your styles :) ==== */
+
+
+/* 	HTML5 Boilerplate
+ 
+	html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
+	v1.4 2009-07-27 | Authors: Eric Meyer & Richard Clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}                  
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section { 
+    display:block;
+}
+nav ul { list-style:none; }
+blockquote, q { quotes:none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content:''; content:none; }
+a { margin:0; padding:0; font-size:100%; vertical-align:baseline; background:transparent; }
+ins { background-color:#ff9; color:#000; text-decoration:none; }
+mark { background-color:#ff9; color:#000; font-style:italic; font-weight:bold; }
+del { text-decoration: line-through; }
+abbr[title], dfn[title] { border-bottom:1px dotted; cursor:help; }
+table { border-collapse:collapse; border-spacing:0; }
+hr { display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 0; padding:0; }
+input, select { vertical-align:middle; }
+
+/* End of Reset CSS 
+
+fonts.css from the YUI Library: developer.yahoo.com/yui/ */
+
+body { font:13px/1.231 sans-serif; *font-size:small; } /* hack retained to preserve specificity */
+select, input, textarea, button { font:99% sans-serif; }
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+
+
+/* 
+ * HTML5 Boilerplate - minimal base styles 
+ */
+
+body, select, input, textarea { 
+  color: #444; 
+  /* font-family: Georgia, serif;  */   
+}
+h1,h2,h3,h4,h5,h6 { font-weight: bold; }
+html { overflow-y: scroll; }
+a:hover, a:active { outline: none; }
+a, a:active, a:visited { color: #607890; }
+a:hover { color: #036; }
+ul, ol { margin-left: 1.8em; }
+ol { list-style-type: decimal; }
+nav ul, nav li { margin: 0; } 
+small { font-size: 85%; }
+strong, th { font-weight: bold; }
+td, td img { vertical-align: top; } 
+sub { vertical-align: sub; font-size: smaller; }
+sup { vertical-align: super; font-size: smaller; }
+pre { 
+  padding: 15px; 
+  white-space: pre; /* CSS2 */
+  white-space: pre-wrap; /* CSS 2.1 */
+  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word; /* IE */
+}
+textarea { overflow: auto; } /* thnx ivannikolic! www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
+.ie6 legend, .ie7 legend { margin-left: -7px; } /* thnx ivannikolic! */
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; }
+.ie7 input[type="checkbox"] { vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+label, input[type=button], input[type=submit], button { cursor: pointer; }
+button, input, select, textarea { margin: 0; }
+input:valid, textarea:valid   {  }
+input:invalid, textarea:invalid { 
+      border-radius: 1px;
+    -moz-box-shadow: 0px 0px 5px red; 
+ -webkit-box-shadow: 0px 0px 5px red; 
+         box-shadow: 0px 0px 5px red;
+}
+.no-boxshadow input:invalid, 
+.no-boxshadow textarea:invalid { background-color: #f0dddd; }
+
+/* By default the selection color is pink */
+::-moz-selection{ background: #f16529; color:#fff; text-shadow: none; }
+::selection { background:#f16529; color:#fff; text-shadow: none; } 
+a:link { -webkit-tap-highlight-color: #FF5E99; } 
+button {  width: auto; overflow: visible; }
+.ie7 img { -ms-interpolation-mode: bicubic; }
+
+
+/* 
+ * Non-semantic helper classes 
+ */
+
+/* for image replacement */
+.ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+
+/* Hide for both screenreaders and browsers */
+.hidden { display: none; visibility: hidden; } 
+
+/* Hide only visually, but have it available for screenreaders */
+.visuallyhidden { position: absolute !important;    
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px); }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Clearfix */
+.clearfix:before, .clearfix:after {
+  content: "\0020"; display: block; height: 0; visibility: hidden;	
+} 
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+
+/*
+    // ========================================== \\
+   ||                                              ||
+   ||               Your styles !                  ||
+   ||                                              ||
+    \\ ========================================== //
+*/
+
+body{
+	font-family:Helvetica, Helvetica Neue, Arial, sans-serif;
+	color: white;
+  background-color: black;
+}
+
+.wrapper{
+	margin:auto;
+	width:960px;
+}
+
+span.faster {
+  color: red;
+}
+
+#header-container header {
+  height:530px;
+	background-image:url('/static/images/beat.jpg');
+	background-repeat:no-repeat;
+	background-position:center bottom;
+}
+#header-container header h2 {
+  color: red;
+  font-size: 30px;
+  font-family: Impact;
+  text-align: left;
+  float: left;
+  margin-left: 380px;
+}
+#header-container header h3 {
+  color: red;
+  font-size: 28px;
+  font-family: Impact;
+  margin-top: 57px;
+  font-style: italic;
+  text-align: left;
+  margin-left: 275px;
+  float: left;
+}
+#header-container header div#networks {
+  width: 168px;
+  height: 280px;
+  float: left; 
+  margin-bottom: 3px;
+  padding: 20px 0px 0px 160px;
+}
+#header-container header div#networks object,
+#header-container header div#networks embed {
+  width: 70px;
+  height: 70px;
+}
+#header-container header img#logo {
+  float: left;
+  margin-bottom: 3px;
+  padding-left: 310px;
+}
+#title {
+  margin-bottom: 15px;
+}
+h1#title{
+  font-family: 'Rock Salt', arial, serif;
+  letter-spacing: 0.25em;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+nav {
+	text-align: left;
+	height: 200px;
+}
+nav#left {
+  float: left;
+  width: 178px;
+  margin-right: 10px;
+  border-right: 1px solid red;
+}
+nav#right {
+  float: left;
+  width: 196px;
+  padding-left: 3px;
+  margin-left: 10px;
+  border-left: 1px solid red;
+}
+nav ul li {
+  margin: 5px 0px 5px 3px;
+}
+nav a {
+	color:white;
+	text-decoration:none;
+	font-family: Slackey, Calibri;
+  font-weight: bold;
+  font-size: 18px;
+}
+nav ul.under a {
+  font-size: 16px;
+}
+nav ul.under li {
+  margin: 0px 0px 0px 6px;
+}
+nav ul li a img {
+  margin-right: 2px;
+}
+nav div#under_products {
+  display: none;
+}
+nav a:active, nav a:visited {
+  color:white;
+}
+nav a:hover {
+  color:red;
+}
+nav a.selected {
+  color:red;
+}
+
+#footer-container{
+	height:30px;
+	margin-top:40px;
+	margin-bottom:30px;
+	float: left;
+}
+#footer-container footer {
+	text-align: center;
+}
+p#copyright{
+  font-style: italic;
+}
+
+#main {
+  height: 300px;
+  margin: auto;
+  width: 1016px;
+}
+#main section {
+  float: left;
+  text-align: left;
+  width: 610px;
+  margin-top: -40px;
+}
+#main section h1 {
+  color: red;
+  font-size: 30px;
+  font-family: Impact;
+  padding-bottom: 5px;
+}
+#main section h2 {
+  color: red;
+  font-family: 'Rock Salt', impact, arial, serif;
+  letter-spacing: 0.25em;
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 10px;
+  margin-top: 25px;
+}
+#main section p {
+  color: white;
+  font-size: 14px;
+  margin-left: 10px;
+}
+#main section p.avertissements {
+  margin-top: 60px;
+  font-size: 11px;
+  font-style: italic;
+  margin-left: 0px;
+}
+#main section p.result {
+  margin-top: 20px;
+  text-align: center;
+}
+#main section p.error {
+  text-align: center;
+  color: red;
+}
+#main section p.photo {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  display: inline-block;
+  width: 100%;
+}
+#main section p.photo img {
+  width: 550px;
+}
+#main section p.photo img.left {
+  width: 190px;
+  float: left;
+}
+#main section p.photo img.middle {
+  width: 190px;
+  margin-left: 12px;
+  float: left;
+}
+#main section p.photo img.right {
+  width: 190px;
+  margin-left: 12px;
+  float: left;
+}
+#main section a {
+  color:red;
+}
+
+#main section div#page_content {
+  position: relative;
+}
+
+#main section div#announcement {
+  position: absolute;
+  z-index: 10000;
+  width: 610px;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  background-color: black;
+}
+#main section div#announcement img {
+  border: 2px solid red;
+  padding: 5px 5px 20px 5px;
+  background-color: black;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  display: none;
+}
+#main section div#announcement div {
+  margin-top: -24px;
+}
+
+#main section form#devis_form {
+  padding-top: 15px;
+  padding-left: 25px;
+}
+#main section form#devis_form label {
+  font-size: 14px;
+}
+#main section form#devis_form table td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#main section form#devis_form table td.label {
+  width: 200px;
+  padding-top: 10px;
+}
+#main section form#devis_form table td.input {
+  width: 340px;
+}
+#main section form#devis_form input[type="text"]:focus,
+#main section form#devis_form textarea:focus {
+  -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 1px, #9cf 0 0 10px;
+  -moz-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 1px, #9cf 0 0 10px;
+}
+#main section form#devis_form input[type="text"],
+#main section form#devis_form textarea {
+  -webkit-box-shadow: rgba(255, 255, 255, 0.199219) 0px 1px 1px;
+  -moz-box-shadow: rgba(255, 255, 255, 0.199219) 0px 1px 1px;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  border: 1px solid red;
+  border-radius: 4px 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  color: black;
+  font-size: 14px;
+  outline: none;
+  padding: 5px;
+  width: 340px;
+}
+#main section form#devis_form tr#type td {
+  padding-bottom: 15px;
+}
+#main section form#devis_form tr#type label {
+  padding-left: 60px;
+}
+#main section form#devis_form tr#type input {
+  margin-left: 5px;
+}
+
+#main section form#devis_form tr#actions td {
+  padding-top: 15px;
+}
+#main section form#devis_form tr#actions td.input {
+  text-align: right;
+}
+#main section form#devis_form tr#actions input[type="submit"] {
+  margin-right: 15px;
+}
+
+#main section div.pointsdevente img {
+  float: right;
+  width: 280px;
+}
+
+.button {
+user-select: none;
+-webkit-user-select: none;
+-moz-user-select: none;
+font: normal normal normal 75%/normal arial, sans-serif;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+background-color:#F9F9F9;
+background: -moz-linear-gradient(center top , #F9F9F9, #E3E3E3) repeat scroll 0 0 #F9F9F9;
+background: -webkit-gradient(linear, 0 40%, 0 70%, from(#F9F9F9), to(#E3E3E3));
+border:1px solid #BBBBBB;
+color:#000000;
+cursor:default;
+margin:0;
+outline:medium none;
+padding:3px 6px;
+text-align:center;
+white-space:nowrap;
+display:inline-block;
+position:relative;
+font-size:12px;
+}
+.button:hover {
+border-color: red !important;
+}
+.button:active {
+background-color:#EEEEEE;
+background:-moz-linear-gradient(center top , #EEEEEE, #F9F9F9) repeat scroll 0 0 #EEEEEE;
+background: -webkit-gradient(linear, 0 40%, 0 70%, from(#EEEEEE), to(#F9F9F9));
+border-color: #444444 !important;
+color:red;
+text-shadow: white 0px 1px 1px;
+}
+.big-button {
+font-size:14px;
+padding:4px 8px;
+}
+/*
+ *  CSS3 Media queries
+ */
+
+@media all and (orientation:portrait) { 
+  
+}
+
+@media all and (orientation:landscape) { 
+  
+}
+
+@media screen and (max-device-width: 480px) {
+  
+}
+
+@media print {
+  * { background: transparent !important; color: #444 !important; text-shadow: none !important; }
+  a, a:visited { color: #444 !important; text-decoration: underline; }
+  a:after { content: " (" attr(href) ")"; } 
+  abbr:after { content: " (" attr(title) ")"; }
+  .ir a:after { content: ""; }  /* Don't show links for images */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */ 
+  tr, img { page-break-inside: avoid; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3{ page-break-after: avoid; }
+}
+

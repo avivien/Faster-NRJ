@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>
+    {% block title %}
+      {% if title %} {{ title }} {% else %} {{ configuration.SYSTEM_TITLE }} {% endif %}
+    {% endblock %}
+    </title>
+
+    {% block style %}
+    <style type="text/css">
+    </style>
+    {% endblock %}
+
+    {% block includes %}
+    {% endblock %}
+  </head>
+  <body>
+    <div id="right-col">
+      <div id="titleBar">
+        <h1>
+        {% block heading %}
+          {% if title %} {{ title }} {% else %} {{ configuration.SYSTEM_TITLE }} {% endif %}
+        {% endblock %}
+        </h1>
+      </div>
+      <div id="content">
+        {% block content %}
+          This page does not yet have any content.
+        {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>

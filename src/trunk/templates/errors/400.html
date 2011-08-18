@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Bad request - 400
+{% endblock %}
+
+{% block heading %}
+  Bad request
+{% endblock %}
+
+{% block content %}
+{% if message %}
+{{ message|escape }}
+{% else %}
+  Your request is malformed.
+{% endif %}
+{% endblock %}

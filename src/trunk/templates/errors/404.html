@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+  404 - Not Found
+{% endblock %}
+
+{% block heading %}
+  404 - Not Found
+{% endblock %}
+
+{% block content %}
+{% if message %}
+{{ message|escape }}
+{% else %}
+  The page you requested doesn't exist.
+{% endif %}
+{% endblock %}
