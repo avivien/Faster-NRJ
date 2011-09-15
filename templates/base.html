@@ -17,7 +17,10 @@
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Rock+Salt"/>
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Slackey"/>
 	<script src="/static/js/libs/modernizr-1.6.min.js"></script>
-	<script src="/static/js/libs/jquery-1.5.1.min.js"></script>
+	<script src="/static/js/libs/jquery-1.6.4.min.js"></script>
+	
+  <script src="/static/js/libs/jquery-ui-1.8.16.slide.min.js"></script>
+	
 	<script src="/static/js/base.js"></script>
 	<script type="text/javascript">
     var _gaq = _gaq || [];
@@ -34,91 +37,67 @@
     })();
   </script>
 </head>
-<body onload="javascript:setContentFromURL();">
-	<div id="header-container">
-		<header class="wrapper">
-		  <a href="/"><img id="logo" src="/static/images/fastersrouge.png" alt="Faster"/></a>
-		  <div id="networks">
-		    <a target="_blank" title="Suivez-nous sur Twitter" href="http://twitter.com/fasternrj"><img src="/static/images/icons/twitter_icon.jpg" alt="Twitter"/></a>
-		    <a target="_blank" title="Suivez-nous sur Facebook" href="http://www.facebook.com/profile.php?id=100002064009386&sk=wall"><img src="/static/images/icons/facebook_icon.png" alt="Facebook"/></a>
-        <!-- Facebook Like Badge START -->
-        <div style="width: 100%;">
-          <div style="background: #3B5998;padding: 5px;">
-            <img src="http://www.facebook.com/images/fb_logo_small.png" alt="Facebook"/>
-            <img src="https://badge.facebook.com/badge/175489199174718.100002064009386.333587001.png" alt="" width="0" height="0"/>
-          </div>
-          <div style="background: #EDEFF4;display: block;border-right: 1px solid #D8DFEA;border-bottom: 1px solid #D8DFEA;border-left: 1px solid #D8DFEA;margin: 0px;padding: 0px 0px 5px 0px;">
-            <div style="background: #EDEFF4;display: block;padding: 5px;">
-              <table cellspacing="0" cellpadding="0" border="0">
-                <tr>
-                  <td valign="top"><img src="http://www.facebook.com/images/icons/fbpage.gif" alt=""/></td>
-                  <td valign="top"><p style="color: #808080;font-family: verdana;font-size: 11px;margin: 0px 0px 0px 0px;padding: 0px 8px 0px 8px;"><a href="https://www.facebook.com/people/Faster-nrj-Energydrink/100002064009386" target="_TOP" style="color: #3B5998;font-family: verdana;font-size: 11px;font-weight: normal;margin: 0px;padding: 0px 0px 0px 0px;text-decoration: none;" title="Faster-nrj Energydrink">Faster-nrj Energydrink</a> aime ça</p></td>
-                </tr>
-              </table>
-            </div>
-            <div style="background: #FFFFFF;clear: both;display: block;margin: 0px;overflow: hidden;padding: 5px;">
-              <table cellspacing="0" cellpadding="0" border="0">
-                <tr>
-                  <td valign="middle"><a href="https://www.facebook.com/pages/FASTERs-Energydrink/175489199174718" target="_TOP" style="border: 0px;color: #3B5998;font-family: verdana;font-size: 12px;font-weight: bold;margin: 0px;padding: 0px;text-decoration: none;" title="FASTER&amp;#039;s Energydrink"><img src="https://www.facebook.com/profile/pic.php?oid=AWwrrTVr-kYroA1a7zNyjZ1RHM48n4kdg1jt1fmVnxIqXsSo39DBeiftMwo6jLO7QhE&size=square" style="border: 0px;margin: 0px;padding: 0px;" alt="FASTER&#039;s Energydrink"/></a></td>
-                  <td valign="middle" style="padding: 0px 8px 0px 8px;"><a href="https://www.facebook.com/pages/FASTERs-Energydrink/175489199174718" target="_TOP" style="border: 0px;color: #3B5998;font-family: verdana;font-size: 12px;font-weight: bold;margin: 0px;padding: 0px;text-decoration: none;" title="FASTER&amp;#039;s Energydrink">FASTER&#039;s Energydrink</a></td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          <div style="display: block;float: right;margin: 0px;padding: 4px 0px 0px 0px;">
-            <a href="http://www.facebook.com/badges/like.php" target="_TOP" style="color: #3B5998;font-family: verdana;font-size: 11px;font-weight: none;margin: 0px;padding: 0px;text-decoration: none;" title="Créer votre badge « J’aime »">Créer votre badge « J’aime »</a>
-          </div>
+<body onload="javascript:setContentFromURL();" onscroll="javascript:move_menu(event);">
+  <nav id="left">
+    <ul id="menu_left" class="upper">
+    	<li>
+        <a id="produits_link" name="Produits" href="/produits" class="ajaxylink{% if page_name == "produits" %} selected{% endif%}"><span title="Produits" class="parent_rub" onmouseover="javascript:$('div#under_products').slideDown();" onmouseout="javascript:hide_under_products(event);">PRODUITS</span></a>
+        <div id="under_products" onmouseout="javascript:hide_under_products(event);">
+          <ul class="under">
+            <li class="under_rub"><a name="Produits#taurine" class="under_rub ajaxylink" href="/produits#taurine">TAURINE</a></li>
+      	    <li class="under_rub"><a name="Produits#guarana" class="under_rub ajaxylink" href="/produits#guarana">GUARANA</a></li>
+          </ul>
         </div>
-        <!-- Facebook Like Badge END -->
-        <object width="70" height="70"> 
-          <param name="movie" value="/static/images/devis.swf" /> 
-          <param name="quality" value="high" /> 
-          <embed src="/static/images/devis.swf" quality="high" width="70" height="70" type="application/x-shockwave-flash"></embed> 
-        </object>
+      </li>
+      <li><a id="devis_link" name="Devis" href="/devis" class="ajaxylink{% if page_name == "devis" %} selected{% endif%}">DEVIS</a></li>
+    	<li><a id="pointsdevente_link" name="Points de vente" href="/pointsdevente" class="ajaxylink{% if page_name == "pointsdevente" %} selected{% endif%}">POINTS DE VENTE</a></li>
+    </ul>
+  </nav>
+  <section id="main">
+  	<header id="header">
+  	  <a href="/"><img style="height: 88px;" id="logo" src="/static/images/fasterrouge_seul.png" alt="Faster"/></a>
+  		<h2>ENERGY DRINK</h2>
+  	</header>
+  	<article>
+      <div id="page_content_1" class="{% if page_name %}{{ page_name }} page_content{% else %}page_content{% endif %}">{% if page_content_template %}{% include page_content_template %}{% endif %}</div>
+      <div id="page_content_2" class="page_content"></div>
+  	</article>
+  	<footer id="footer">
+  	  <nav id="bottom">
+        <a id="faq_link" name="FAQ" href="/faq" class="ajaxylink{% if page_name == "faq" %} selected{% endif%}">FAQ</a>&nbsp;-
+        <a id="contactez-nous_link" name="Contactez-nous" href="/contactez-nous" class="ajaxylink{% if page_name == "contactez-nous" %} selected{% endif%}">Contact</a>&nbsp;-
+        <a id="societe_link" name="Société" href="/societe" class="ajaxylink{% if page_name == "societe" %} selected{% endif%}">Société</a>
+      </nav>
+  		<p id="copyright">Copyright © 2011 Faster's Energy Drink. All Rights Reserved.</p>
+  	</footer>
+  	<div id="networks">
+      <div>
+        <g:plusone size="medium" href="http://www.faster-nrj.fr/"></g:plusone>
       </div>
-			<h2>ENERGY DRINK</h2>
-			<h3>Faster's give me the power</h3>
-		</header>
-	</div>
-	<div id="main">
-	  <nav id="left">
-      <ul>
-      	<li><a id="photos_link" name="Photos" href="/photos" class="ajaxylink{% if page_name == "photos" %} selected{% endif%}"><img src="/static/images/red_chevron.png"/>PHOTOS</a></li>
-      	<li><a id="videos_link" name="Videos" href="/videos" class="ajaxylink{% if page_name == "videos" %} selected{% endif%}"><img src="/static/images/red_chevron.png"/>VIDEOS</a></li>
-      	<li><a id="cocktails_link" name="Cocktails" href="/cocktails" class="ajaxylink{% if page_name == "cocktails" %} selected{% endif%}"><img src="/static/images/red_chevron.png"/>COCKTAILS</a></li>
-      	<li><a id="sports_link" name="Sports" href="/sports" class="ajaxylink{% if page_name == "sports" %} selected{% endif%}"><img src="/static/images/red_chevron.png"/>SPORTS</a></li>
-      	<li><a id="pointsdevente_link" name="Points de vente" href="/pointsdevente" class="ajaxylink{% if page_name == "pointsdevente" %} selected{% endif%}"><img src="/static/images/red_chevron.png"/>POINTS DE VENTE</a></li>
-      	<li><a id="evenements_link" name="Evenements" href="/evenements" class="ajaxylink{% if page_name == "evenements" %} selected{% endif%}"><img src="/static/images/red_chevron.png"/>EVENEMENTS</a></li>
-      	<li><a id="faq_link" name="FAQ" href="/faq" class="ajaxylink{% if page_name == "faq" %} selected{% endif%}"><img src="/static/images/red_chevron.png"/>FAQ</a></li>
-      </ul>
-	  </nav>
-		<section>
-      <div id="page_content" {% if page_name %}class="{{ page_name }}"{% endif %}>{% if page_content_template %}{% include page_content_template %}{% endif %}</div>
-		</section>
-		<nav id="right">
-      <ul>
-      	<li>
-          <a id="produits_link" name="Produits" href="/produits" class="ajaxylink{% if page_name == "produits" %} selected{% endif%}"><img src="/static/images/red_chevron.png"/><span title="Produits" class="parent_rub" onmouseover="javascript:$('div#under_products').slideDown();" onmouseout="javascript:hide_under_products(event);">PRODUITS</span></a>
-          <div id="under_products" onmouseout="javascript:hide_under_products(event);">
-            <ul class="under">
-              <li class="under_rub"><a name="Produits#taurine" class="under_rub ajaxylink" href="/produits#taurine"><img src="/static/images/little_red_chevron.png"/>TAURINE DRINK</a></li>
-        	    <li class="under_rub"><a name="Produits#guarana" class="under_rub ajaxylink" href="/produits#guarana"><img src="/static/images/little_red_chevron.png"/>GUARANA DRINK</a></li>
-            </ul>
-          </div>
-        </li>
-        <li><a id="societe_link" name="Société" href="/societe" class="ajaxylink{% if page_name == "societe" %} selected{% endif%}"><img src="/static/images/red_chevron.png"/>SOCIETE</a></li>
-        <li><a id="devis_link" name="Devis" href="/devis" class="ajaxylink{% if page_name == "devis" %} selected{% endif%}"><img src="/static/images/red_chevron.png"/>DEVIS</a></li>
-      	<li><a id="partenaires_link" name="Partenaires" href="/partenaires" class="ajaxylink{% if page_name == "partenaires" %} selected{% endif%}"><img src="/static/images/red_chevron.png"/>PARTENAIRES</a></li>
-      	<li><a id="contactez-nous_link" name="Contactez-nous" href="/contactez-nous" class="ajaxylink{% if page_name == "contactez-nous" %} selected{% endif%}"><img src="/static/images/red_chevron.png"/>CONTACTEZ - NOUS</a></li>
-      </ul>
-	  </nav>
-	  <div id="footer-container">
-  		<footer class="wrapper">
-  			<p id="copyright">©2011 Faster</p>
-  		</footer>
-  	</div>
-	</div>
+      <div style="margin-top: 4px;">
+        <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script> 
+        <fb:like href="http://www.faster-nrj.fr/" layout="button_count" show_faces="false" width="90" action="like" colorscheme="dark" font=""></fb:like> 
+      </div>
+      <div style="margin-top: 6px;">
+        <iframe src="http://platform.twitter.com/widgets/follow_button.html?screen_name=fasternrj&button=grey&id=twitter_tweet_button_0&lang=fr&link_color=%2300AEFF&show_count=false&show_screen_name=&text_color=%23FFFFFF" allowtransparency="true" frameborder="0" scrolling="no" class="twitter-follow-button" style="width: 170px; height: 20px; " title=""></iframe>
+      </div>
+    </div>
+	</section>
+	<nav id="right">
+    <ul id="menu_right" class="upper">
+    	<li><a id="partenaires_link" name="Partenaires" href="/partenaires" class="ajaxylink{% if page_name == "partenaires" %} selected{% endif%}">PARTENAIRES</a></li>
+    	<li><a id="evenements_link" name="Evenements" href="/evenements" class="ajaxylink{% if page_name == "evenements" %} selected{% endif%}">EVENEMENTS</a></li>
+    	<li><a id="cocktails_link" name="Cocktails" href="/cocktails" class="ajaxylink{% if page_name == "cocktails" %} selected{% endif%}">COCKTAILS</a></li>
+    </ul>
+  </nav>
 	<script>
+	  window.___gcfg = {lang: 'fr'};
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+    
 	  $('a.ajaxylink').click(function(e){
 	    hide_announcement();
 	    
@@ -130,6 +109,12 @@
       }
       return ajaxylink_click(page_name, page_url);
     });
+    /*
+    window.onpopstate = function(e) {
+      console.log("location: " + document.location);
+      console.log("event: " + e);
+    };
+    */
 	</script>
 	<!--[if lt IE 7 ]>
 	<script src="js/libs/dd_belatedpng.js"></script>

@@ -1,3 +1,5 @@
+var is_footer_animation_finish = false;
+
 function do_ajax_request(method, url, body, http_callback, content_callback, page_hash) {
   var async = (http_callback != null);
   
@@ -8,7 +10,7 @@ function do_ajax_request(method, url, body, http_callback, content_callback, pag
     req.setRequestHeader("Content-type", "text/plain");
     req.setRequestHeader("Content-length", body.length);
   }
-  req.setRequestHeader("Connection", "close");
+  //req.setRequestHeader("Connection", "close");
 
   if (async) {
     req.onreadystatechange = function() {
@@ -41,8 +43,13 @@ function position_hash(page_hash) {
   }
 }
 
+function onanimate_footer(now, fx) {
+  position_networks_during_scroll();
+}
+
 function set_content(status, response, url, content_callback, page_hash) {
-  var page_content_div = document.getElementById('page_content');
+  var page_content_1_div = document.getElementById('page_content_1');
+  var page_content_2_div = document.getElementById('page_content_2');
   if(status == 200) {
     var page_name = url.match('^/(.*)/content$')[1];
     var page_link = document.getElementById(page_name+'_link');
@@ -53,21 +60,72 @@ function set_content(status, response, url, content_callback, page_hash) {
       }
     }
     page_link.className = "ajaxylink selected";
-    page_content_div.className = page_name;
-    page_content_div.innerHTML = response;
+    
+    //get the first <nav> parent classname
+    var parent_node = page_link.parentNode;
+    while (parent_node.nodeName != 'NAV' && parent_node.nodeName != 'BODY') {
+      parent_node = parent_node.parentNode;
+    }
+    var direction_hide = 'right';
+    var direction_show = 'left';
+    if (parent_node.nodeName == 'NAV' && parent_node.id) {
+      if (parent_node.id == 'right') {
+        direction_hide = 'left';
+        direction_show = 'right';
+      } else if (parent_node.id == 'bottom') {
+        direction_hide = 'up';
+        direction_show = 'down';
+      } 
+    }
+    
+    var old_page_content_div = page_content_1_div;
+    var new_page_content_div = page_content_2_div;
+    if (page_content_1_div.style.display == 'none') {
+      old_page_content_div = page_content_2_div;
+      new_page_content_div = page_content_1_div;
+    }
+    
+    new_page_content_div.className = page_name + ' page_content';
+    new_page_content_div.innerHTML = response;
+    
+    $(old_page_content_div).hide("slide", { direction: direction_hide }, 1000);
+    $("section#main article").animate({height: $(new_page_content_div).outerHeight(true)}, {duration: 1000, step: onanimate_footer});
+    $(new_page_content_div).show("slide", { direction: direction_show }, 1000);
+    
     if(content_callback != null) {
       content_callback(page_hash);
     }
   } else if(status == 404) {
-    page_content_div.innerHTML = "<h1>LA PAGE N'EXISTE PAS</h1><p>Cette page n'existe pas sur le site.</p>";
+    var old_page_content_div = page_content_1_div;
+    var new_page_content_div = page_content_2_div;
+    if (page_content_1_div.style.display == 'none') {
+      old_page_content_div = page_content_2_div;
+      new_page_content_div = page_content_1_div;
+    }
+    new_page_content_div.innerHTML = "<h2 class=\"first\">LA PAGE N'EXISTE PAS</h2><p>Cette page n'existe pas sur le site.</p>";
+    
+    $(old_page_content_div).hide("slide", { direction: 'right' }, 1000);
+    $("section#main article").animate({height: $(new_page_content_div).outerHeight(true)}, {duration: 1000, step: onanimate_footer});
+    $(new_page_content_div).show("slide", { direction: 'left' }, 1000);
   } else {
-    page_content_div.innerHTML = '<h1>ERREUR</h1><p>Une erreur inattendue est survenue.</p>';
+    var old_page_content_div = page_content_1_div;
+    var new_page_content_div = page_content_2_div;
+    if (page_content_1_div.style.display == 'none') {
+      old_page_content_div = page_content_2_div;
+      new_page_content_div = page_content_1_div;
+    }
+    new_page_content_div.innerHTML = '<h2 class="first">ERREUR</h2><p>Une erreur inattendue est survenue.</p>';
+    
+    $(old_page_content_div).hide("slide", { direction: 'right' }, 1000);
+    $("section#main article").animate({height: $(new_page_content_div).outerHeight(true)}, {duration: 1000, step: onanimate_footer});
+    $(new_page_content_div).show("slide", { direction: 'left' }, 1000);
   }
 }
 
 function load_content(page_name) {
   var content_callback;
   var page_hash;
+  //Hack pour les sous pages de produits
   if(page_name == "taurine" || page_name == "guarana"){
     page_hash = page_name;
     page_name = "produits";
@@ -76,10 +134,44 @@ function load_content(page_name) {
   do_ajax_request('GET', '/'+page_name+'/content', null, set_content, content_callback, page_hash);
 }
 
+function position_networks_during_scroll() {
+  var footer_div = document.getElementById('footer');
+  var networks_div = document.getElementById('networks');
+  var window_bottom = $(window).scrollTop() + $(window).height();
+  //We need to substract the margin-top of the footer element
+  if(window_bottom > (footer_div.offsetTop - 40)) {
+    networks_div.style.position = 'absolute';
+    $(networks_div).css('margin-bottom', '100px');
+  } else {
+    networks_div.style.position = 'fixed';
+    $(networks_div).css('margin-bottom', '0px');
+  }
+}
+
+function position_networks(page_content_height) {
+  var window_height = $(window).height();
+  var header_height = $("#header").outerHeight(true);
+  if (window_height < (page_content_height + header_height)) {
+    $("#networks").css('position', 'fixed');
+    $("#networks").css('margin-bottom', '0px');
+  } else {
+    $("#networks").css('position', 'absolute');
+    $("#networks").css('margin-bottom', '100px');
+  }
+}
+
 function setContentFromURL() {
   var initialContentPage = window.location.hash;
   if (initialContentPage) {
     load_content(initialContentPage.substring(1));
+  } else {
+    var page_content_height = $("#page_content_1").outerHeight(true);
+    position_networks(page_content_height);
+    //On place le footer dynamiquement
+    $("section#main article").css('height', page_content_height);
+    is_footer_animation_finish = true;
+    $("#networks").css('display', 'block');
+    $("#footer").css('display', 'block');
   }
 }
 
@@ -101,7 +193,7 @@ function send_devis() {
      dataString += devis_radio_inputs[j].name + '=' + devis_radio_inputs[j].value;
    }
   }
-  var page_content_div = document.getElementById('page_content');
+  var page_content_div = document.getElementById('new_page_content');
   $.ajax({
 		url: "/envoyer_devis",
 		type: "POST",
@@ -118,7 +210,6 @@ function send_devis() {
 }
 
 function ajaxylink_click(page_name, page_url) {
-  //alert('page_name: ' + page_name + ' ,page_url: ' + page_url);
   var page_hash;
   // Fallback for browser that don't support the history API
   if (!('replaceState' in window.history)) {
@@ -139,6 +230,25 @@ function ajaxylink_click(page_name, page_url) {
     page_hash = page_url;
   }
   window.history.replaceState(null, "Faster NRJ" + page_name, '/'+page_url);
+  //window.history.pushState(null, "Faster NRJ" + page_name, '/'+page_url);
   load_content(page_hash);
   return false;
+}
+
+function move_menu(event) {
+  var left_nav = document.getElementById('left');
+  var menu_left = document.getElementById('menu_left');
+  var menu_right = document.getElementById('menu_right');
+  var window_top = $(window).scrollTop();
+  if (window_top > left_nav.offsetTop) {
+    menu_left.style.position = 'fixed';
+    menu_right.style.position = 'fixed';
+  } else {
+    menu_left.style.position = 'absolute';
+    menu_right.style.position = 'absolute';
+  }
+  
+  if (is_footer_animation_finish == true) {
+    position_networks_during_scroll();
+  }
 }

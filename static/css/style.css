@@ -88,7 +88,7 @@ input[type="radio"] { vertical-align: text-bottom; }
 input[type="checkbox"] { vertical-align: bottom; }
 .ie7 input[type="checkbox"] { vertical-align: baseline; }
 .ie6 input { vertical-align: text-bottom; }
-label, input[type=button], input[type=submit], button { cursor: pointer; }
+label, input[type=button], input[type=submit], input[type=reset], button { cursor: pointer; }
 button, input, select, textarea { margin: 0; }
 input:valid, textarea:valid   {  }
 input:invalid, textarea:invalid { 
@@ -143,60 +143,37 @@ button {  width: auto; overflow: visible; }
 */
 
 body{
-	font-family:Helvetica, Helvetica Neue, Arial, sans-serif;
+  margin: auto;
+	width: 960px;
+	height: 100%;
+	font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
 	color: white;
   background-color: black;
-}
-
-.wrapper{
-	margin:auto;
-	width:960px;
 }
 
 span.faster {
   color: red;
 }
 
-#header-container header {
-  height:530px;
-	background-image:url('/static/images/beat.jpg');
-	background-repeat:no-repeat;
-	background-position:center bottom;
+header {
+  padding-top: 10px;
+  text-align: center;
+  margin-bottom: 10px;
 }
-#header-container header h2 {
+header h2 {
   color: red;
   font-size: 30px;
   font-family: Impact;
-  text-align: left;
-  float: left;
-  margin-left: 380px;
 }
-#header-container header h3 {
+header h3 {
   color: red;
   font-size: 28px;
   font-family: Impact;
   margin-top: 57px;
   font-style: italic;
-  text-align: left;
-  margin-left: 275px;
-  float: left;
 }
-#header-container header div#networks {
-  width: 168px;
-  height: 280px;
-  float: left; 
-  margin-bottom: 3px;
-  padding: 20px 0px 0px 160px;
-}
-#header-container header div#networks object,
-#header-container header div#networks embed {
-  width: 70px;
-  height: 70px;
-}
-#header-container header img#logo {
-  float: left;
-  margin-bottom: 3px;
-  padding-left: 310px;
+header img#logo {
+  margin-left: 17px;
 }
 #title {
   margin-bottom: 15px;
@@ -209,37 +186,58 @@ h1#title{
 }
 
 nav {
-	text-align: left;
-	height: 200px;
+	float: left;
+	width: 170px;
+	height: 100%;
+	margin-top: 130px;
+	position: relative;
 }
 nav#left {
-  float: left;
-  width: 178px;
-  margin-right: 10px;
-  border-right: 1px solid red;
+  text-align: right;
 }
 nav#right {
-  float: left;
-  width: 196px;
-  padding-left: 3px;
-  margin-left: 10px;
-  border-left: 1px solid red;
+  text-align: left;
 }
-nav ul li {
-  margin: 5px 0px 5px 3px;
+nav#left ul.upper {
+  margin-right: 10px;
+}
+nav#right ul.upper {
+  margin-left: 10px;
+}
+nav#bottom {
+  width: 100%;
+  height: 25px;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  font-size: 20px;
+}
+nav ul.upper {
+  position: absolute;
+  top: 0px;
+  width: 160px;
+  padding-top: 15px;
+}
+nav ul.upper li {
+  margin: 0px 0px 0px 0px;
 }
 nav a {
 	color:white;
 	text-decoration:none;
-	font-family: Slackey, Calibri;
-  font-weight: bold;
-  font-size: 18px;
+	font-family: Impact;
+  font-size: 30px;
+  line-height: 32px;
+}
+nav#bottom a {
+  font-size: 20px;
+  line-height: 22px;
 }
 nav ul.under a {
-  font-size: 16px;
+  font-size: 20px;
+  line-height: 22px;
 }
 nav ul.under li {
-  margin: 0px 0px 0px 6px;
+  margin: 0px 0px 0px 0px;
 }
 nav ul li a img {
   margin-right: 2px;
@@ -256,38 +254,52 @@ nav a:hover {
 nav a.selected {
   color:red;
 }
+div#networks {
+  display: none;
+  /*
+  position: fixed;
+  margin-bottom: 0px;
+  */
+  position: absolute;
+  margin-bottom: 100px;
+  bottom: 0px;
+  height: 72px;
+  width: 170px;
+  /* 960px - 170px - 170px */
+  margin-left: 620px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
 
-#footer-container{
+footer {
+  display: none;
 	height:30px;
 	margin-top:40px;
 	margin-bottom:30px;
-	float: left;
-}
-#footer-container footer {
 	text-align: center;
 }
 p#copyright{
   font-style: italic;
+  font-size: 10px;
 }
 
-#main {
-  height: 300px;
-  margin: auto;
-  width: 1016px;
-}
-#main section {
+section#main {
   float: left;
-  text-align: left;
-  width: 610px;
-  margin-top: -40px;
+  width: 620px;
+  height: 100%;
+  position: relative;
 }
-#main section h1 {
+article {
+  text-align: left;
+  height: 230px;
+}
+article h1 {
   color: red;
   font-size: 30px;
   font-family: Impact;
   padding-bottom: 5px;
 }
-#main section h2 {
+article h2 {
   color: red;
   font-family: 'Rock Salt', impact, arial, serif;
   letter-spacing: 0.25em;
@@ -296,26 +308,29 @@ p#copyright{
   margin-bottom: 10px;
   margin-top: 25px;
 }
-#main section p {
+article h2.first {
+  margin-top: 0px;
+}
+article p {
   color: white;
   font-size: 14px;
   margin-left: 10px;
 }
-#main section p.avertissements {
+article p.avertissements {
   margin-top: 60px;
   font-size: 11px;
   font-style: italic;
   margin-left: 0px;
 }
-#main section p.result {
+article p.result {
   margin-top: 20px;
   text-align: center;
 }
-#main section p.error {
+article p.error {
   text-align: center;
   color: red;
 }
-#main section p.photo {
+article p.photo {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -323,32 +338,46 @@ p#copyright{
   display: inline-block;
   width: 100%;
 }
-#main section p.photo img {
+article p.photo img {
   width: 550px;
 }
-#main section p.photo img.left {
+article p.photo img.left {
   width: 190px;
   float: left;
 }
-#main section p.photo img.middle {
-  width: 190px;
-  margin-left: 12px;
-  float: left;
-}
-#main section p.photo img.right {
+article p.photo img.middle {
   width: 190px;
   margin-left: 12px;
   float: left;
 }
-#main section a {
+article p.photo img.right {
+  width: 190px;
+  margin-left: 12px;
+  float: left;
+}
+article a {
   color:red;
 }
 
-#main section div#page_content {
-  position: relative;
+article div.page_content {
+  position: absolute;
+  width: 620px;
+}
+article div#page_content_2 {
+  display: none;
 }
 
-#main section div#announcement {
+article div.evenements {
+  height: 875px;
+}
+article div.pointsdevente {
+  height: 555px;
+}
+article div.partenaires {
+  height: 300px;
+}
+
+article div#announcement {
   position: absolute;
   z-index: 10000;
   width: 610px;
@@ -358,7 +387,7 @@ p#copyright{
   text-align: center;
   background-color: black;
 }
-#main section div#announcement img {
+article div#announcement img {
   border: 2px solid red;
   padding: 5px 5px 20px 5px;
   background-color: black;
@@ -367,35 +396,35 @@ p#copyright{
   border-radius: 4px;
   display: none;
 }
-#main section div#announcement div {
+article div#announcement div {
   margin-top: -24px;
 }
 
-#main section form#devis_form {
+article form#devis_form {
   padding-top: 15px;
   padding-left: 25px;
 }
-#main section form#devis_form label {
+article form#devis_form label {
   font-size: 14px;
 }
-#main section form#devis_form table td {
+article form#devis_form table td {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-#main section form#devis_form table td.label {
+article form#devis_form table td.label {
   width: 200px;
   padding-top: 10px;
 }
-#main section form#devis_form table td.input {
+article form#devis_form table td.input {
   width: 340px;
 }
-#main section form#devis_form input[type="text"]:focus,
-#main section form#devis_form textarea:focus {
+article form#devis_form input[type="text"]:focus,
+article form#devis_form textarea:focus {
   -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 1px, #9cf 0 0 10px;
   -moz-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 1px, #9cf 0 0 10px;
 }
-#main section form#devis_form input[type="text"],
-#main section form#devis_form textarea {
+article form#devis_form input[type="text"],
+article form#devis_form textarea {
   -webkit-box-shadow: rgba(255, 255, 255, 0.199219) 0px 1px 1px;
   -moz-box-shadow: rgba(255, 255, 255, 0.199219) 0px 1px 1px;
   -webkit-transition: all 0.2s linear;
@@ -410,27 +439,27 @@ p#copyright{
   padding: 5px;
   width: 340px;
 }
-#main section form#devis_form tr#type td {
+article form#devis_form tr#type td {
   padding-bottom: 15px;
 }
-#main section form#devis_form tr#type label {
+article form#devis_form tr#type label {
   padding-left: 60px;
 }
-#main section form#devis_form tr#type input {
+article form#devis_form tr#type input {
   margin-left: 5px;
 }
 
-#main section form#devis_form tr#actions td {
+article form#devis_form tr#actions td {
   padding-top: 15px;
 }
-#main section form#devis_form tr#actions td.input {
+article form#devis_form tr#actions td.input {
   text-align: right;
 }
-#main section form#devis_form tr#actions input[type="submit"] {
+article form#devis_form tr#actions input[type="submit"] {
   margin-right: 15px;
 }
 
-#main section div.pointsdevente img {
+article div.pointsdevente img {
   float: right;
   width: 280px;
 }
