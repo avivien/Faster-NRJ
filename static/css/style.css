@@ -144,10 +144,10 @@ button {  width: auto; overflow: visible; }
 
 body{
   margin: auto;
-	width: 960px;
-	height: 100%;
-	font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
-	color: white;
+  width: 960px;
+  height: 100%;
+  font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
+  color: white;
   background-color: black;
   background-image: url('/static/images/fond.jpg');
   background-repeat: no-repeat;
@@ -171,6 +171,9 @@ header {
   padding-top: 10px;
   text-align: center;
   margin-bottom: 10px;
+  background-image: url('/static/images/boule_rouge.png');
+  background-repeat: no-repeat;
+  background-position: 252px 5px;
 }
 header h2 {
   color: red;
