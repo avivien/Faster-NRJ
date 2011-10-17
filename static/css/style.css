@@ -288,14 +288,21 @@ div#networks {
 
 footer {
   display: none;
-	height:30px;
-	margin-top:40px;
-	margin-bottom:30px;
+	height: 50px;
+	margin-top: 40px;
+	margin-bottom: 30px;
 	text-align: center;
 }
-p#copyright{
+p#copyright {
   font-style: italic;
   font-size: 10px;
+}
+p#conception_web {
+  font-style: italic;
+  font-size: 10px;
+}
+p#conception_web a, p#conception_web a:visited, p#conception_web a:hover {
+  color: #666666;
 }
 
 section#main {
@@ -372,6 +379,16 @@ article p.photo img.right {
   margin-left: 12px;
   float: left;
 }
+
+article p.video {
+  text-align: center;
+  margin-top: 3px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  display: inline-block;
+  width: 100%;
+}
+
 article a, article a.selected, article a:visited {
   color:red;
 }
@@ -392,9 +409,6 @@ article div.evenements {
 }
 article div.pointsdevente {
   height: 555px;
-}
-article div.partenaires {
-  height: 300px;
 }
 
 article div#announcement {
