@@ -18,8 +18,25 @@
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Changa+One"/>
 	<script src="/static/js/libs/modernizr-1.6.min.js"></script>
 	<script src="/static/js/libs/jquery-1.6.4.min.js"></script>
-	
   <script src="/static/js/libs/jquery-ui-1.8.16.slide.min.js"></script>
+	
+	
+	<!-- required -->
+  <link rel="stylesheet" type="text/css" href="/static/css/360player.css" />
+  
+  <!-- special IE-only canvas fix -->
+  <!--[if IE]><script type="text/javascript" src="/static/js/libs/excanvas.js"></script><![endif]-->
+  
+  <!-- Apache-licensed animation library -->
+  <script type="text/javascript" src="/static/js/libs/berniecode-animator.js"></script>
+  
+  <!-- the core stuff -->
+  <script type="text/javascript">
+    window.SM2_DEFER = true;
+  </script>
+  <script type="text/javascript" src="/static/js/libs/soundmanager2-nodebug-jsmin.js"></script>
+  <script type="text/javascript" src="/static/js/libs/360player.js"></script>
+	
 	
 	<script src="/static/js/base.js"></script>
 	<script type="text/javascript">
@@ -37,7 +54,7 @@
     })();
   </script>
 </head>
-<body onload="javascript:setContentFromURL();" onscroll="javascript:move_menu(event);">
+<body onload="javascript:setContentFromURL('{{ page_name }}');" onscroll="javascript:move_menu(event);">
   <nav id="left">
     <ul id="menu_left" class="upper">
     	<li>
@@ -83,9 +100,17 @@
         <iframe src="http://platform.twitter.com/widgets/follow_button.html?screen_name=fasternrj&button=grey&id=twitter_tweet_button_0&lang=fr&link_color=%2300AEFF&show_count=false&show_screen_name=&text_color=%23FFFFFF" allowtransparency="true" frameborder="0" scrolling="no" class="twitter-follow-button" style="width: 170px; height: 20px; " title=""></iframe>
       </div>
     </div>
+    <div id="music">
+      <div class="ui360" style="margin-top:-0.55em">
+        <a href="/static/music/fasters_mix.mp3"></a>
+        <div style="padding-top: 15px;"><span class="faster">FASTER</span><span class="faster" style="color: red;">'s</span><span style="font-size: 14px;"> mix</span></div>
+      </div>
+    </div>
+    <div id="sm2-container">
+      <!-- flash movie is added here -->
+    </div>
 	</section>
 	<nav id="right">
-	  <audio><div>toto</div></audio>
     <ul id="menu_right" class="upper">
     	<li><a id="partenaires_link" name="Partenaires" href="/partenaires" class="ajaxylink{% if page_name == "partenaires" %} selected{% endif%}">PARTENAIRES</a></li>
     	<li><a id="evenements_link" name="Evenements" href="/evenements" class="ajaxylink{% if page_name == "evenements" %} selected{% endif%}">EVENEMENTS</a></li>
@@ -110,13 +135,7 @@
         return true
       }
       return ajaxylink_click(page_name, page_url);
-    });
-    /*
-    window.onpopstate = function(e) {
-      console.log("location: " + document.location);
-      console.log("event: " + e);
-    };
-    */
+    });   
 	</script>
 	<!--[if lt IE 7 ]>
 	<script src="js/libs/dd_belatedpng.js"></script>

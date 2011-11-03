@@ -88,7 +88,7 @@ function set_content(status, response, url, content_callback, page_hash) {
     new_page_content_div.className = page_name + ' page_content';
     new_page_content_div.innerHTML = response;
     
-    $(old_page_content_div).hide("slide", { direction: direction_hide }, 1000);
+    $(old_page_content_div).hide("slide", { direction: direction_hide }, 1000, function() {old_page_content_div.innerHTML = '';});
     $("section#main article").animate({height: $(new_page_content_div).outerHeight(true)}, {duration: 1000, step: onanimate_footer});
     $(new_page_content_div).show("slide", { direction: direction_show }, 1000);
     
@@ -137,14 +137,19 @@ function load_content(page_name) {
 function position_networks_during_scroll() {
   var footer_div = document.getElementById('footer');
   var networks_div = document.getElementById('networks');
+  var music_div = document.getElementById('music');
   var window_bottom = $(window).scrollTop() + $(window).height();
   //We need to substract the margin-top of the footer element
-  if(window_bottom > (footer_div.offsetTop - 40)) {
+  if(window_bottom > (footer_div.offsetTop - 19)) {
     networks_div.style.position = 'absolute';
     $(networks_div).css('margin-bottom', '100px');
+    music_div.style.position = 'absolute';
+    $(music_div).css('margin-bottom', '100px');
   } else {
     networks_div.style.position = 'fixed';
     $(networks_div).css('margin-bottom', '0px');
+    music_div.style.position = 'fixed';
+    $(music_div).css('margin-bottom', '0px');
   }
 }
 
@@ -154,13 +159,17 @@ function position_networks(page_content_height) {
   if (window_height < (page_content_height + header_height)) {
     $("#networks").css('position', 'fixed');
     $("#networks").css('margin-bottom', '0px');
+    $("#music").css('position', 'fixed');
+    $("#music").css('margin-bottom', '0px');
   } else {
     $("#networks").css('position', 'absolute');
     $("#networks").css('margin-bottom', '100px');
+    $("#music").css('position', 'absolute');
+    $("#music").css('margin-bottom', '100px');
   }
 }
 
-function setContentFromURL() {
+function setContentFromURL(page_name) {
   var initialContentPage = window.location.hash;
   if (initialContentPage) {
     load_content(initialContentPage.substring(1));
@@ -172,7 +181,37 @@ function setContentFromURL() {
     is_footer_animation_finish = true;
     $("#networks").css('display', 'block');
     $("#footer").css('display', 'block');
+    
+    $("#music").css('display', 'block');
+    load_music_player(page_name);
   }
+}
+
+function load_music_player(page_name) {
+  // construct the instance (must be named soundManager, and scoped globally)
+  window.soundManager = new SoundManager();
+  
+  if (navigator.userAgent.match(/webkit/i) && navigator.userAgent.match(/mobile/i)) {
+    // iPad, iPhone etc.
+    soundManager.useHTML5Audio = true;
+  }
+  
+  soundManager.consoleOnly = true;
+  soundManager.flashVersion = 9;
+  soundManager.useHighPerformance = true;
+  soundManager.useFlashBlock = true;
+  
+  soundManager.url = '/static/swf/libs/';
+  soundManager.preferFlash = false;
+  
+  //Display the music player
+  var threeSixtyPlayer = new ThreeSixtyPlayer();
+  soundManager.beginDelayedInit();
+  if(page_name != undefined && page_name != '') {
+    threeSixtyPlayer.config.autoPlay = true; 
+  }
+  // hook into SM2 init
+  soundManager.onready(threeSixtyPlayer.init);
 }
 
 function hide_announcement() {

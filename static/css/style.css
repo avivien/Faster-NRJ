@@ -271,10 +271,6 @@ nav a.selected {
 }
 div#networks {
   display: none;
-  /*
-  position: fixed;
-  margin-bottom: 0px;
-  */
   position: absolute;
   margin-bottom: 100px;
   bottom: 0px;
@@ -284,6 +280,17 @@ div#networks {
   margin-left: 620px;
   padding-left: 10px;
   padding-bottom: 10px;
+}
+
+div#music {
+  display: none;
+  position: absolute;
+  margin-bottom: 100px;
+  bottom: 0px;
+  height: 62px;
+  width: 170px;
+  margin-left: -172px;
+  padding-top: 20px;
 }
 
 footer {
@@ -378,6 +385,11 @@ article p.photo img.right {
   width: 190px;
   margin-left: 12px;
   float: left;
+}
+
+article table.photo {
+  display: inline-table;
+  margin: 10px 10px 10px 70px;
 }
 
 article p.video {
