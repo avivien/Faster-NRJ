@@ -144,7 +144,7 @@ button {  width: auto; overflow: visible; }
 
 body{
   margin: auto;
-  width: 960px;
+  width: 1010px;
   height: 100%;
   font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
   color: white;
@@ -202,7 +202,7 @@ h1#title{
 
 nav {
 	float: left;
-	width: 170px;
+	width: 195px;
 	height: 100%;
 	margin-top: 130px;
 	position: relative;
@@ -214,10 +214,10 @@ nav#right {
   text-align: left;
 }
 nav#left ul.upper {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 nav#right ul.upper {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 nav#bottom {
   width: 100%;
@@ -230,7 +230,7 @@ nav#bottom {
 nav ul.upper {
   position: absolute;
   top: 0px;
-  width: 160px;
+  width: 190px;
   padding-top: 15px;
 }
 nav ul.upper li {
@@ -416,11 +416,29 @@ article div#page_content_2 {
   display: none;
 }
 
-article div.evenements {
-  height: 875px;
+article div.produits {
+  height: 810px;
+}
+article div.devis {
+  height: 450px;
 }
 article div.pointsdevente {
-  height: 555px;
+  height: 580px;
+}
+article div.partenaires {
+  height: 2200px;
+}
+article div.evenements {
+  height: 420px;
+}
+article div.evenements iframe {
+  margin: 30px 85px 30px 85px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+article div.sportifs {
+  height: 710px;
 }
 
 article div#announcement {
@@ -508,6 +526,41 @@ article form#devis_form tr#actions input[type="submit"] {
 article div.pointsdevente img {
   float: right;
   width: 280px;
+}
+
+article div.sportifs table p {
+  margin: 0px;
+}
+article div.sportifs table ul {
+  list-style: none;
+}
+article div.sportifs table td {
+  width: 300px;
+  padding: 0px 5px 0px 20px;
+}
+article div.sportifs table td.section {
+  padding-top: 10px;
+}
+article div.sportifs table td.section p {
+  font-weight: 900;
+  color: red;
+}
+article div.sportifs table td.image {
+  text-align: center;
+  padding: 0px 5px 0px 5px;
+}
+article div.sportifs table td.valeur {
+  padding-top: 3px;
+}
+article div.sportifs table td.valeur ul {
+  margin: 0px 0px 0px 5px;
+  font-size: 14px;
+}
+article div.sportifs table td.type {
+  padding: 10px 0px 0px 25px;
+}
+article div.sportifs table td.type ul {
+  margin: 0px 0px 0px 5px;
 }
 
 .button {
