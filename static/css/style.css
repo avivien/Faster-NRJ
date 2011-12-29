@@ -440,6 +440,9 @@ article div.evenements iframe {
 article div.sportifs {
   height: 710px;
 }
+article div.photos {
+  height: 440px;
+}
 
 article div#announcement {
   position: absolute;
