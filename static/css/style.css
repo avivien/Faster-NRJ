@@ -419,8 +419,11 @@ article div#page_content_2 {
 article div.produits {
   height: 810px;
 }
-article div.devis {
-  height: 450px;
+article div.commande {
+  height: 210px;
+}
+article div.contactez-nous {
+  height: 590px;
 }
 article div.pointsdevente {
   height: 580px;
@@ -467,31 +470,31 @@ article div#announcement div {
   margin-top: -24px;
 }
 
-article form#devis_form {
+article form#message_form {
   padding-top: 15px;
   padding-left: 25px;
 }
-article form#devis_form label {
+article form#message_form label {
   font-size: 14px;
 }
-article form#devis_form table td {
+article form#message_form table td {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-article form#devis_form table td.label {
+article form#message_form table td.label {
   width: 200px;
   padding-top: 10px;
 }
-article form#devis_form table td.input {
+article form#message_form table td.input {
   width: 340px;
 }
-article form#devis_form input[type="text"]:focus,
-article form#devis_form textarea:focus {
+article form#message_form input[type="text"]:focus,
+article form#message_form textarea:focus {
   -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 1px, #9cf 0 0 10px;
   -moz-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 1px, #9cf 0 0 10px;
 }
-article form#devis_form input[type="text"],
-article form#devis_form textarea {
+article form#message_form input[type="text"],
+article form#message_form textarea {
   -webkit-box-shadow: rgba(255, 255, 255, 0.199219) 0px 1px 1px;
   -moz-box-shadow: rgba(255, 255, 255, 0.199219) 0px 1px 1px;
   -webkit-transition: all 0.2s linear;
@@ -506,23 +509,23 @@ article form#devis_form textarea {
   padding: 5px;
   width: 340px;
 }
-article form#devis_form tr#type td {
+article form#message_form tr#type td {
   padding-bottom: 15px;
 }
-article form#devis_form tr#type label {
+article form#message_form tr#type label {
   padding-left: 60px;
 }
-article form#devis_form tr#type input {
+article form#message_form tr#type input {
   margin-left: 5px;
 }
 
-article form#devis_form tr#actions td {
+article form#message_form tr#actions td {
   padding-top: 15px;
 }
-article form#devis_form tr#actions td.input {
+article form#message_form tr#actions td.input {
   text-align: right;
 }
-article form#devis_form tr#actions input[type="submit"] {
+article form#message_form tr#actions input[type="submit"] {
   margin-right: 15px;
 }
 

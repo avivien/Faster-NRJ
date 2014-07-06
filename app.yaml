@@ -1,13 +1,21 @@
-application: faster-nrj
-version: 2-1
-runtime: python
+application: faster-nrj-hrd
+version: 2-3
+runtime: python27
 api_version: 1
+threadsafe: true
 
-default_expiration: "1d"
+default_expiration: "30d"
+
+libraries:
+  - name: django
+    version: "1.2"
 
 handlers:
   - url: /static
     static_dir: static
 
+  - url: /devis
+    script: redirect.application
+
   - url: /(.*)
-    script: main.py
+    script: main.application

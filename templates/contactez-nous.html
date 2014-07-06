@@ -2,6 +2,38 @@
 <p>A l'adresse <a href="mailto:contact@faster-drink.fr">contact@faster-drink.fr</a></p>
 <h2>PAR TELEPHONE</h2>
 <p><span class="faster">Nico</span> responsable commercial et chargé de production (0683647879)</p>
-<p><span class="faster">Greg</span> chargé de communication (0619493086)</p>
+<p><span class="faster">Greg</span> chargé de communication (0651362118)</p>
 <h2>VIA <a target="_blank" title="Suivez-nous sur Facebook" href="http://www.facebook.com/profile.php?id=100002064009386&sk=wall"><img src="/static/images/icons/facebook_icon.png" alt="Facebook"/></a> OU <a target="_blank" title="Suivez-nous sur Twitter" href="http://twitter.com/fasternrj"><img src="/static/images/icons/twitter_icon.jpg" alt="Twitter"/></a></h2>
 <p>N'hésiter pas à y mettre vos commentaires.</p>
+<h2>OU LAISSEZ-NOUS UN MESSAGE</h2>
+{% if not init and success %}
+<p class="result">{{ response|default:"Message envoyé." }}</p>
+{% else %}
+  {% if not init and not success %}
+<p class="error">{{ response|default:"Désolé une erreur s'est produite lors de l'envoi. Pouvez-vous rééssayer ? Merci." }}</p>
+  {% endif %}
+<form id="message_form" method="POST" action="/envoyer_message" onsubmit="return send_message();">
+  <table>
+    <tr>
+      <td class="label"><label>Nom : </label></td>
+      <td class="input"><input type="text" name="nom" value="{{ nom|default:"" }}"/></td>
+    </tr>
+    <tr>
+      <td class="label"><label>Email : </label></td>
+      <td class="input"><input type="text" name="email" value="{{ email|default:"" }}"/></td>
+    </tr>
+    <tr>
+      <td class="label"><label>Téléphone (facultatif) : </label></td>
+      <td class="input"><input type="text" name="tel" value="{{ tel|default:"" }}"/></td>
+    </tr>
+    <tr>
+      <td class="label"><label>Message : </label></td>
+      <td class="input"><textarea name="message" rows="5" >{{ message|default:"" }}</textarea></td>
+    </tr>
+    <tr id="actions">
+      <td class="label"></td>
+      <td class="input"><input type="submit" name="envoyer" value="Envoyer" class="button big-button"/><input type="reset" name="annuler" value="Annuler" class="button big-button"/></td>
+    </tr>
+  </table>
+</form>
+{% endif %}

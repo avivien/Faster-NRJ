@@ -25,7 +25,8 @@ class Page(webapp.RequestHandler):
       else:
         page_content_template = 'index.html'
       path = os.path.join(os.path.dirname(__file__), 'templates/base.html')
-      response_text = template.render(path, {'page_name': page,
+      response_text = template.render(path, {'init': True,
+                                             'page_name': page,
                                              'page_content_template': page_content_template})
     except template.django.template.TemplateDoesNotExist:
       logging.warn('Page.get - Warning: page %s not found.'%(page))
@@ -41,11 +42,7 @@ class ContentPage(webapp.RequestHandler):
   def get(self, page):
     try:
       path = os.path.join(os.path.dirname(__file__), 'templates/' + page + '.html')
-      if page == 'devis':
-        template_data = {'init': True}
-      else:
-        template_data = {}
-      response_text = template.render(path, template_data)
+      response_text = template.render(path, {'init': True})
     except template.django.template.TemplateDoesNotExist:
       logging.warn('ContentPage.get - Warning: page %s not found.'%(page))
       self.error(404)
@@ -56,45 +53,36 @@ class ContentPage(webapp.RequestHandler):
       response_text = utils.getErrorTemplate(500)
     self.response.out.write(response_text)
 
-class Devis(webapp.RequestHandler):
+class Message(webapp.RequestHandler):
   def post(self):
     try:
-      type_utilisateur = self.request.POST.get('type')
       nom = self.request.POST.get('nom')
       email = self.request.POST.get('email')
       tel = self.request.POST.get('tel')
-      ville = self.request.POST.get('ville')
-      commande = self.request.POST.get('commande')
       message = self.request.POST.get('message')
-      if nom and email and ville and message:
+      if nom and email and message:
         if utils.validateEmail(email):
-          email_template_path = os.path.join(os.path.dirname(__file__), 'templates/email_devis.html')
-          html_body = template.render(email_template_path, {'type_utilisateur': type_utilisateur,
-                                                            'nom': nom,
+          email_template_path = os.path.join(os.path.dirname(__file__), 'templates/email_message.html')
+          html_body = template.render(email_template_path, {'nom': nom,
                                                             'email': email,
                                                             'tel': tel,
-                                                            'ville': ville,
-                                                            'commande': commande,
                                                             'message': message})
           mail.send_mail(sender='Faster\'s energy <webmaster@faster-nrj.fr>', 
-                         to='contact@faster-nrj.fr',
-                         subject='Demande de devis de la part de ' + nom,
+                         to='contact@faster-drink.fr',
+                         subject='Message de la part de ' + nom,
                          body=html_body,
                          html=html_body)
-          path = os.path.join(os.path.dirname(__file__), 'templates/devis.html')
+          path = os.path.join(os.path.dirname(__file__), 'templates/contactez-nous.html')
           response_text = template.render(path, {'init': False,
                                                  'success': True,
-                                                 'response': u'Devis envoyé.'})
+                                                 'response': u'Message envoyé.'})
         else:
-          path = os.path.join(os.path.dirname(__file__), 'templates/devis.html')
+          path = os.path.join(os.path.dirname(__file__), 'templates/contactez-nous.html')
           response_text = template.render(path, {'init': False,
                                                  'success': False,
-                                                 'type_utilisateur': type_utilisateur,
                                                  'nom':nom,
                                                  'email':email,
                                                  'tel': tel,
-                                                 'ville': ville,
-                                                 'commande': commande,
                                                  'message': message,
                                                  'response': u'L\'email renseigné n\'est pas valide.'})
       else:
@@ -102,23 +90,18 @@ class Devis(webapp.RequestHandler):
           response = u'Le nom est obligatoire.'
         elif not email:
           response = u'L\'email est obligatoire.'
-        elif not ville:
-          response = u'La ville est obligatoire.'
         elif not message:
           response = u'Vous devez mettre un message.'
-        path = os.path.join(os.path.dirname(__file__), 'templates/devis.html')
+        path = os.path.join(os.path.dirname(__file__), 'templates/contactez-nous.html')
         response_text = template.render(path, {'init': False,
                                                'success': False,
-                                               'type_utilisateur': type_utilisateur,
                                                'nom':nom,
                                                'email':email,
                                                'tel': tel,
-                                               'ville': ville,
-                                               'commande': commande,
                                                'message': message,
                                                'response': response})
     except:
-      logging.error('Devis.post - Error : ' + traceback.format_exc())
+      logging.error('Message.post - Error : ' + traceback.format_exc())
       self.error(500)
       response_text = utils.getErrorTemplate(500)
     self.response.out.write(response_text)

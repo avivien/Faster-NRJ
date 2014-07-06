@@ -218,31 +218,26 @@ function hide_announcement() {
   $('div#announcement').fadeOut(1000);
 }
 
-function send_devis() {
+function send_message() {
   var dataString = new String('');
-  var devis_text_inputs = $("form#devis_form input[type='text']");
-  for (var i = 0; i < devis_text_inputs.length; i++) {
-    dataString += devis_text_inputs[i].name + '=' + encodeURIComponent(devis_text_inputs[i].value) + '&';
+  var message_text_inputs = $("form#message_form input[type='text']");
+  for (var i = 0; i < message_text_inputs.length; i++) {
+    dataString += message_text_inputs[i].name + '=' + encodeURIComponent(message_text_inputs[i].value) + '&';
   }
-  var devis_form_obj = document.getElementById('devis_form');
-  dataString += devis_form_obj.message.name + '=' + encodeURIComponent(devis_form_obj.message.value) + '&';
-  var devis_radio_inputs = devis_form_obj.type;
-  for (var j = 0; j < devis_radio_inputs.length; j++) {
-   if(devis_radio_inputs[j].checked == true) {
-     dataString += devis_radio_inputs[j].name + '=' + devis_radio_inputs[j].value;
-   }
-  }
-  var page_content_div = document.getElementById('new_page_content');
+  var message_form_obj = document.getElementById('message_form');
+  dataString += message_form_obj.message.name + '=' + encodeURIComponent(message_form_obj.message.value);
+  
+  var page_content_div = $('div.contactez-nous.page_content');
   $.ajax({
-		url: "/envoyer_devis",
+		url: "/envoyer_message",
 		type: "POST",
 		dataType: "html",
 		data: dataString,
 		success: function(data, textStatus, jqXHR) {
-      page_content_div.innerHTML = data;
+      page_content_div.html(data);
     },
 		error: function(jqXHR, textStatus, errorThrown) {
-      page_content_div.innerHTML = '<h1>ERREUR</h1><p>Une erreur est survenue lors de l\'envoi du devis. Veuillez rééssayer ultérieurement.</p>';
+      page_content_div.html('<h1>ERREUR</h1><p>Une erreur est survenue lors de l\'envoi du message. Veuillez rééssayer ultérieurement.</p>');
     }
 	});
 	return false;
